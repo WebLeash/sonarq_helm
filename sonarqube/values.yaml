@@ -49,7 +49,7 @@ elasticsearch:
   bootstrapChecks: true
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   externalPort: 9000
   internalPort: 9000
   labels:
@@ -77,12 +77,12 @@ nginx:
   enabled: false
 
 ingress:
-  enabled: false
+  enabled: true
   # Used to create an Ingress record.
-  hosts:
-    - name: sonarqube.your-org.com
+  #hosts:
+  #  - name: sonarqube.your-org.com
       # Different clouds or configurations might need /* as the default path
-      path: /
+  #    path: /
       # For additional control over serviceName and servicePort
       # serviceName: someService
       # servicePort: somePort
@@ -406,7 +406,7 @@ postgresql:
   # existingSecretPasswordKey: "postgresql-password"
   postgresqlUsername: "sonarUser"
   postgresqlPassword: "sonarPass"
-  postgresqlDatabase: "sonarDB"
+  postgresqlDatabase: "sonardb"
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
